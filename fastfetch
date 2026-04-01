@@ -1,0 +1,127 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "source": "~/.config/fastfetch/logo.png",
+    "type": "kitty",
+    "height": 18,
+    "padding": {
+      "top": 2,
+      "left": 2,
+      "right": 4
+    }
+  },
+  "display": {
+    "separator": " : "
+  },
+  "modules": [
+    "break",
+    // --- HARDWARE BOX (YELLOW) ---
+    {
+      "type": "custom",
+      "format": "┌─────────────── Hardware ───────────────┐",
+      "outputColor": "yellow"
+    },
+    {
+      "type": "host",
+      "key": "│ PC      ",
+      "keyColor": "yellow",
+      // \u001b[33m turns the right wall Yellow!
+      "format": "{2}                       \u001b[33m│"
+    },
+    {
+      "type": "cpu",
+      "key": "│ CPU     ",
+      "keyColor": "yellow",
+      "format": "Intel i7-13620H @ {7}  \u001b[33m│"
+    },
+    {
+      "type": "gpu",
+      "key": "│ GPU     ",
+      "keyColor": "yellow",
+      "hideType": "integrated",
+      "format": "GeForce RTX 4060            \u001b[33m│"
+    },
+    {
+      "type": "gpu",
+      "key": "│ GPU     ",
+      "keyColor": "yellow",
+      "hideType": "discrete",
+      "format": "Intel UHD Graphics          \u001b[33m│"
+    },
+    {
+      "type": "memory",
+      "key": "│ Memory  ",
+      "keyColor": "yellow",
+      "format": "{1} / {2} ({3})  \u001b[33m│"
+    },
+    {
+      "type": "custom",
+      "format": "└────────────────────────────────────────┘",
+      "outputColor": "yellow"
+    },
+    
+    "break",
+    
+    // --- SOFTWARE BOX (RED) ---
+    {
+      "type": "custom",
+      "format": "┌─────────────── Software ───────────────┐",
+      "outputColor": "red"
+    },
+    {
+      "type": "os",
+      "key": "│ OS      ",
+      "keyColor": "red",
+      // \u001b[31m turns the right wall Red!
+      "format": "{3}                     \u001b[31m│"
+    },
+    {
+      "type": "kernel",
+      "key": "│ Kernel  ",
+      "keyColor": "red",
+      "format": "{2}            \u001b[31m│"
+    },
+    {
+      "type": "packages",
+      "key": "│ Packages",
+      "keyColor": "red",
+      "format": "{1} (pacman)               \u001b[31m│"
+    },
+    {
+      "type": "shell",
+      "key": "│ Shell   ",
+      "keyColor": "red",
+      "format": "{1} {4}                  \u001b[31m│"
+    },
+    {
+      "type": "command",
+      "key": "│ OS Age  ",
+      "keyColor": "red",
+      "text": "days=$(( ($(date +%s) - $(date -d \"$(head -n1 /var/log/pacman.log | cut -d ' ' -f 1 | tr -d '[]')\" +%s)) / 86400 )); printf \"%-28s\u001b[31m│\" \"$days days\""
+    },
+    {
+      "type": "uptime",
+      "key": "│ Uptime  ",
+      "keyColor": "red",
+      "format": "{1} days {2} hours {3} mins      \u001b[31m│"
+    },
+    {
+      "type": "wm",
+      "key": "│ WM      ",
+      "keyColor": "red",
+      "format": "{1} ({3})          \u001b[31m│"
+    },
+    {
+      "type": "custom",
+      "format": "└────────────────────────────────────────┘",
+      "outputColor": "red"
+    },
+    "break",
+    
+    // --- 8 BIG CIRCLES ---
+    {
+        "type": "custom",
+        "format": "             \u001b[30m  \u001b[31m  \u001b[32m  \u001b[33m  \u001b[34m  \u001b[35m  \u001b[36m  \u001b[37m "
+    }
+  ]
+}
